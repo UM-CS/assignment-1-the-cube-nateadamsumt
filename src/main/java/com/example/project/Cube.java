@@ -6,27 +6,27 @@ public class Cube {
 	static String[][] myCube = 
 				    {
 				        {
-				            "r", "r", "r",
+				            "r", "r", "r", //front
 				            "r", "r", "r",
 				            "r", "r", "r",
 				        },	{
-				            "b", "b", "b",
+				            "b", "b", "b", //top
 				            "b", "b", "b",
 				            "b", "b", "b",
 				        },	{
-				            "o", "o", "o",
+				            "o", "o", "o", //back
 				            "o", "o", "o",
 				            "o", "o", "o",
 				        },	{
-				            "g", "g", "g", 
+				            "g", "g", "g", //bottom
 				            "g", "g", "g",
 				            "g", "g", "g",
 				        },	{
-				            "y", "y", "y",
+				            "y", "y", "y", //right
 				            "y", "y", "y",
 				            "y", "y", "y",
 				        },	{
-				            "w", "w", "w",
+				            "w", "w", "w", //left
 				            "w", "w", "w",
 				            "w", "w", "w",
 				        },
@@ -116,13 +116,22 @@ public class Cube {
 		 * Uncomment the lines down below to begin testing the starter code.
 		 */
 
-		// printCube(myCube);
+		 printCube(myCube);
 
-		// rotateFace(numCube, 0);
+		 rotateFace(numCube, 0);
 
-		// printCube(numCube);
+		 printCube(numCube);
 	
 	}
 
 }
 
+/*
+ * How I want to attempt the cube assignment:
+ * 
+ * If I have a face movement, assign the movement of each face as u,d,l,r,b,f as moving
+ * the faces on those sides. If that is successful, can move deeper to storage of the cube's
+ * movements and finish the assignment well ish.
+ * Given is the movement of just one face, must assgn the movement of that face onto 4 other
+ * faces, using array manipulation and reassignment.
+ */

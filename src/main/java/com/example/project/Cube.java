@@ -10,7 +10,7 @@ public class Cube {
 				            "r", "r", "r",
 				            "r", "r", "r",
 				        },	{
-				            "b", "b", "b", //top
+				            "b", "b", "b", //bottom
 				            "b", "b", "b",
 				            "b", "b", "b",
 				        },	{
@@ -18,7 +18,7 @@ public class Cube {
 				            "o", "o", "o",
 				            "o", "o", "o",
 				        },	{
-				            "g", "g", "g", //bottom
+				            "g", "g", "g", //top
 				            "g", "g", "g",
 				            "g", "g", "g",
 				        },	{
@@ -37,27 +37,27 @@ public class Cube {
 	static String[][] numCube = 
 				    {
 				        {
-				            "r1", "r2", "r3",
+				            "r1", "r2", "r3", //front
 				            "r4", "r5", "r6",
 				            "r7", "r8", "r9",
 				        },	{
-				            "b1", "b2", "b3",
+				            "b1", "b2", "b3", //bottom
 				            "b4", "b5", "b6",
 				            "b7", "b8", "b9",
 				        },	{
-				            "o1", "o2", "o3",
+				            "o1", "o2", "o3", //back
 				            "o4", "o5", "o6",
 				            "o7", "o8", "o9",
 				        },	{
-				            "g1", "g2", "g3", 
+				            "g1", "g2", "g3", //top
 				            "g4", "g5", "g6",
 				            "g7", "g8", "g9",
 				        },	{
-				            "y1", "y2", "y3",
+				            "y1", "y2", "y3", //right
 				            "y4", "y5", "y6",
 				            "y7", "y8", "y9",
 				        },	{
-				            "w1", "w2", "w3",
+				            "w1", "w2", "w3", //left
 				            "w4", "w5", "w6",
 				            "w7", "w8", "w9",
 				        },
@@ -109,6 +109,27 @@ public class Cube {
 		}
 	}
 
+	public static void moveCube(char direction, String[][] numCube){
+		//in theory, this would take individual moves, rotate the face and move the nearest
+		//row of faces and rotate them as well
+		/*
+		 * if move is u, take top face and rotate with front, left, right, back and so on.
+		 * use switch statements, will help for cases of movement
+		 */
+		//String U.moveCube() = rotateFace(numCube, 0);
+		switch(direction){
+			case 'U':
+			rotateFace(numCube, 3);
+				break;
+			case 'D':
+			case 'F':
+			case 'B':
+			case 'L':
+			case 'R':
+			default:
+			System.out.println("Move not found, please try again.");
+		}
+	}
 	
 	public static void main(final String[] args) {
 
@@ -118,7 +139,7 @@ public class Cube {
 
 		 printCube(myCube);
 
-		 rotateFace(numCube, 0);
+		 moveCube('U', numCube);
 
 		 printCube(numCube);
 	

@@ -89,8 +89,22 @@ public class Cube {
 		 */
 
 	} 
-	static void rotateRow(String[][] Cube, int face){
+	static void rotateFacePrime(String[][] Cube, int face){
+		String Temp = null;
+		Temp = Cube[face][0];
+		Cube[face][0] = Cube[face][2];
+		Cube[face][2] = Cube[face][8];
+		Cube[face][8] = Cube[face][6];
+		Cube[face][6] = Temp;
+		Temp = Cube[face][1];
+		Cube[face][1] = Cube[face][5];
+		Cube[face][5] = Cube[face][7];
+		Cube[face][7] = Cube[face][3];
+		Cube[face][3] = Temp;
 
+		/*
+		 * Counter Clockwise Movement
+		 */
 	}
 
 
@@ -113,7 +127,7 @@ public class Cube {
 		}
 	}
 
-	public static void moveCube(char direction, String[][] numCube){
+	public static void moveCube(String direction, String[][] numCube){
 		//in theory, this would take individual moves, rotate the face and move the nearest
 		//row of faces and rotate them as well
 		/*
@@ -122,14 +136,42 @@ public class Cube {
 		 */
 		//String U.moveCube() = rotateFace(numCube, 0);
 		switch(direction){
-			case 'U':
+			case "U":
+			rotateFacePrime(numCube, 3);
+				break;
+			case "D":
+			rotateFace(numCube, 1);
+				break;
+			case "F":
+			rotateFace(numCube, 0);
+				break;
+			case "B":
+			rotateFacePrime(numCube, 2);
+				break;
+			case "L":
+			rotateFace(numCube, 4);
+				break;
+			case "R":
+			rotateFace(numCube, 5);
+				break;
+			case "U'":
 			rotateFace(numCube, 3);
 				break;
-			case 'D':
-			case 'F':
-			case 'B':
-			case 'L':
-			case 'R':
+			case "D'":
+			rotateFacePrime(numCube, 1);
+				break;
+			case "F'":
+			rotateFacePrime(numCube, 0);
+				break;
+			case "B'":
+			rotateFace(numCube, 2);
+				break;
+			case "L'":
+			rotateFacePrime(numCube, 4);
+				break;
+			case "R'":
+			rotateFacePrime(numCube, 5);
+				break;
 			default:
 			System.out.println("Move not found, please try again.");
 		}
@@ -141,10 +183,9 @@ public class Cube {
 		 * Uncomment the lines down below to begin testing the starter code.
 		 */
 
+		 moveCube("U'", numCube);
+		
 		 printCube(myCube);
-
-		 moveCube('U', numCube);
-
 		 printCube(numCube);
 	
 	}

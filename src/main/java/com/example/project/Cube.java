@@ -22,11 +22,11 @@ public class Cube {
 				            "g", "g", "g",
 				            "g", "g", "g",
 				        },	{
-				            "y", "y", "y", //right
+				            "y", "y", "y", //left
 				            "y", "y", "y",
 				            "y", "y", "y",
 				        },	{
-				            "w", "w", "w", //left
+				            "w", "w", "w", //right
 				            "w", "w", "w",
 				            "w", "w", "w",
 				        },
@@ -53,11 +53,11 @@ public class Cube {
 				            "g4", "g5", "g6",
 				            "g7", "g8", "g9",
 				        },	{
-				            "y1", "y2", "y3", //right
+				            "y1", "y2", "y3", //left
 				            "y4", "y5", "y6",
 				            "y7", "y8", "y9",
 				        },	{
-				            "w1", "w2", "w3", //left
+				            "w1", "w2", "w3", //right
 				            "w4", "w5", "w6",
 				            "w7", "w8", "w9",
 				        },
@@ -89,6 +89,10 @@ public class Cube {
 		 */
 
 	} 
+	static void rotateRow(String[][] Cube, int face){
+
+	}
+
 
 	static void printCube(String[][] theCube) {
 		for (int x = 0; x < 6; x++){

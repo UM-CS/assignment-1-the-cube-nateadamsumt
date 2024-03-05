@@ -8,6 +8,8 @@ package com.example.project;
 
 import java.util.Scanner;
 
+import java.util.ArrayList;
+
 public class Cube {
 
     //I beseech thee, a prism molded to perfection,
@@ -590,15 +592,38 @@ public class Cube {
                 break;
         }
     }
-    
+    static String[][] Squidward ={
+					{"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣀⣠⣤⣤⣄⣀⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"},
+					{"⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⠤⠖⠊⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠙⠲⢤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"},
+					{"⠀⠀⠀⠀⠀⠀⠀⡤⠊⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀"},
+					{"⠀⠀⠀⠀⠀⠀⡜⠀⠀⠀⠀⠀⠀⢀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢢⠀⠀⠀⠀⠀⢳⠀⠀⠀⠀⠀⠀⠀⠀"},
+					{"⠀⠀⠀⠀⠀⣸⠁⠀⠀⠀⠀⠀⠀⠀⠱⡀⠀⠀⠀⠀⠀⠀⠀⡀⠈⠀⡀⠀⠀⠀⠈⡇⠀⠀⠀⠀⠀⠀⠀"},
+					{"⠀⠀⠀⠀⠀⡏⠀⠀⠀⠀⠀⠀⠀⠀⡰⠁⠀⠀⠀⠀⠀⠀⠀⠘⡆⡜⠁⠀⠀⠀⠀⢧⡀⠀⠀⠀⠀⠀⠀"},
+					{"⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠸⡀⠀⠀⠀⠀⠀⣀⣤⡂⠀⠇⠱⠀⡀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀"},
+					{"⠀⠀⠀⠀⠀⢇⠀⠀⠀⠀⠀⠀⠀⠀⠈⢄⡀⢠⣟⢭⣥⣤⠽⡆⠀⡶⣊⣉⣲⣤⢀⡞⠀⠀⠀⠀⠀⠀⠀"},
+					{"⠀⠀⠀⠀⠀⠘⣆⠀⠀⠀⠀⠀⠀⡀⠀⠐⠂⠘⠄⣈⣙⡡⡴⠀⠀⠙⣄⠙⣛⠜⠘⣆⠀⠀⠀⠀⠀⠀⠀"},
+					{"⠀⠀⠀⠀⠀⠀⠈⢦⡀⠀⠀⠀⢸⠁⠀⠀⠀⠀⠀⠀⠄⠊⠀⠀⠀⠀⡸⠛⠀⠀⠀⢸⠆⠀⠀⠀⠀⠀⠀"},
+					{"⠀⠀⠀⠀⠀⠀⠀⠀⠈⠓⠦⢄⣘⣄⠀⠀⠀⠀⠀⠀⠀⡠⠀⠀⠀⠀⣇⡀⠀⠀⣠⠎⠀⠀⠀⠀⠀⠀⠀"},
+					{"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⠁⠈⡟⠒⠲⣄⠀⠀⡰⠇⠖⢄⠀⠀⡹⡇⢀⠎⠁⠀⠀⠀⠀⠀⠀⠀⠀"},
+					{"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡇⠀⠀⡇⠀⠀⠹⠀⡞⠀⠀⢀⠤⣍⠭⡀⢱⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"},
+					{"⠀⠀⠀⠀⠀⠀⢀⣀⣀⣠⠞⠀⠀⢠⡇⠀⠀⠀⠀⠁⠀⢴⠥⠤⠦⠦⡼⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"},
+					{"⣀⣤⣴⣶⣿⣿⡟⠁⠀⠋⠀⠀⠀⢸⠁⠀⠀⠀⠀⠀⠀⠀⠑⣠⢤⠐⠁⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"},
+					{"⣿⣿⣿⣿⣿⡟⠀⠀⠀⠀⠀⠀⠀⢸⡀⠀⠀⠀⠀⠀⠀⠀⠀⠬⠥⣄⠀⠀⠈⠲⡄⠀⠀⠀⠀⠀⠀⠀⠀"},
+					{"⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠙⠦⣄⠀⠀⠀⠀⠀⠀⠀⠀⠈⢳⠀⠀⢀⣿⡀⠀⠀⠀⠀⠀⠀⠀"},
+					{"⣿⣿⣿⣿⣿⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠒⠦⠤⢤⣄⣀⣠⠤⢿⣶⣶⣿⣿⣿⣶⣤⡀⠀⠀⠀⠀"},
+					{"⣿⣿⣿⣿⣿⣿⣷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡼⠁⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣄⠀⠀⠀"},
+					{"⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣦⣤⣤⣀⣀⣀⣀⣀⣀⣀⣤⣤⣤⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀"},
+	};
     public static void main(final String[] args) {
 
         Scanner user_input = new Scanner(System.in);
 
-        System.out.println("Insert Upper case letter or letter with ' for Prime");
-        System.out.println();
+		ArrayList <String> moves = new ArrayList<String>();
 
-        while(true){
+        System.out.println("Insert Upper case letter or letter with ' for Prime or q for quit");
+        System.out.println();
+		Boolean quit = true;
+        while(quit){
             System.out.println("Please enter the move you would like to perform: ");
             String input = user_input.nextLine();
             moveCube(input.substring(0), Cube);
@@ -606,49 +631,76 @@ public class Cube {
             //prints solution to each possibility
             switch(input){
                 case "U":
-                    System.out.println("Solution: u");
+                    System.out.println("Solution: U'");
+					moves.add("U");
                     break;
                 case "D":
-                    System.out.println("Solution: d");
+                    System.out.println("Solution: D'");
+					moves.add("D");
                     break;
                 case "R":	
-                    System.out.println("Solution: r");
+                    System.out.println("Solution: R'");
+					moves.add("R");
                     break;
                 case "L":
-                    System.out.println("Solution: l");
+                    System.out.println("Solution: L'");
+					moves.add("L");
                     break;
                 case "F":
-                    System.out.println("Solution: f");
+                    System.out.println("Solution: F'");
+					moves.add("F");
                     break;
                 case "B":
-                    System.out.println("Solution: b");
+                    System.out.println("Solution: B'");
+					moves.add("B");
                     break;
                 case "U'":
                     System.out.println("Solution: U");
+					moves.add("U'");
                     break;
                 case "D'":
                     System.out.println("Solution: D");
+					moves.add("D'");
                     break;
                 case "R'":
                     System.out.println("Solution: R");
+					moves.add("R'");
                     break;
                 case "L'":
-                    System.out.println("Solution: I");
+                    System.out.println("Solution: L");
+					moves.add("L'");
                     break;
                 case "F'":
                     System.out.println("Solution: F");
+					moves.add("F'");
                     break;
                 case "B'":
                     System.out.println("Solution: B");
+					moves.add("B'");
                     break;
+				case "q":
+					quit = false;
+					//litterally cause im bored, I apologize... but squidward :)
+					for (String[] row : Squidward) {
+						for (String element : row) {
+							System.out.print(element);
+						}
+						System.out.println();
+					}
+					break;
                 default:
                     System.out.println("That is not a valid move please choose from: ");
-                    System.out.println("U D R L F B u d r l f b");
+                    System.out.println("U D R L F B U' D' R' L' F' B' or q");
             }
             //print(numCube);
             System.out.println("--------------------------------");
             printCube(Cube);
             System.out.println("--------------------------------");
         }
+		/*for (int i = moves.size() - 1; i>=0; i--){
+		 */
+		}
+
     }
-}
+
+//nice ammount of lines I got here 😏

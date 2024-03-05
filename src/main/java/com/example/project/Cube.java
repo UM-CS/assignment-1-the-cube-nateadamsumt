@@ -1,203 +1,654 @@
+//Nate Adams
+//3/4/24
+
+//worked with Madison for the assignment
+
+//import statements
 package com.example.project;
+
+import java.util.Scanner;
 
 public class Cube {
 
-	//A Cube in the correct format for the ultimate submission
-	static String[][] myCube = 
-				    {
-				        {
-				            "r", "r", "r", //front
-				            "r", "r", "r",
-				            "r", "r", "r",
-				        },	{
-				            "b", "b", "b", //bottom
-				            "b", "b", "b",
-				            "b", "b", "b",
-				        },	{
-				            "o", "o", "o", //back
-				            "o", "o", "o",
-				            "o", "o", "o",
-				        },	{
-				            "g", "g", "g", //top
-				            "g", "g", "g",
-				            "g", "g", "g",
-				        },	{
-				            "y", "y", "y", //left
-				            "y", "y", "y",
-				            "y", "y", "y",
-				        },	{
-				            "w", "w", "w", //right
-				            "w", "w", "w",
-				            "w", "w", "w",
-				        },
-				    };
-	
-						
-	//A Cube with numbers to test rotation.
-	static String[][] numCube = 
-				    {
-				        {
-				            "r1", "r2", "r3", //front
-				            "r4", "r5", "r6",
-				            "r7", "r8", "r9",
-				        },	{
-				            "b1", "b2", "b3", //bottom
-				            "b4", "b5", "b6",
-				            "b7", "b8", "b9",
-				        },	{
-				            "o1", "o2", "o3", //back
-				            "o4", "o5", "o6",
-				            "o7", "o8", "o9",
-				        },	{
-				            "g1", "g2", "g3", //top
-				            "g4", "g5", "g6",
-				            "g7", "g8", "g9",
-				        },	{
-				            "y1", "y2", "y3", //left
-				            "y4", "y5", "y6",
-				            "y7", "y8", "y9",
-				        },	{
-				            "w1", "w2", "w3", //right
-				            "w4", "w5", "w6",
-				            "w7", "w8", "w9",
-				        },
-				    };
-	
+    //I beseech thee, a prism molded to perfection,
+	//crafted in accordance with the meticulous standards fit 
+	//for the paramount of submission.
+    static String[][] Cube = 
+                    {
+                        {
+                            "r", "r", "r",
+                            "r", "r", "r",
+                            "r", "r", "r",
+                        },	{
+                            "b", "b", "b",
+                            "b", "b", "b",
+                            "b", "b", "b",
+                        },	{
+                            "o", "o", "o",
+                            "o", "o", "o",
+                            "o", "o", "o",
+                        },	{
+                            "g", "g", "g", 
+                            "g", "g", "g",
+                            "g", "g", "g",
+                        },	{
+                            "y", "y", "y",
+                            "y", "y", "y",
+                            "y", "y", "y",
+                        },	{
+                            "w", "w", "w",
+                            "w", "w", "w",
+                            "w", "w", "w",
+                        },
+                    };
+                            
+    //A Cube with numbers to test rotation.
+    static String[][] numCube = 
+                    {
+                        {
+                            "r1", "r2", "r3",
+                            "r4", "r5", "r6",
+                            "r7", "r8", "r9",
+                        },	{
+                            "b1", "b2", "b3",
+                            "b4", "b5", "b6",
+                            "b7", "b8", "b9",
+                        },	{
+                            "o1", "o2", "o3",
+                            "o4", "o5", "o6",
+                            "o7", "o8", "o9",
+                        },	{
+                            "g1", "g2", "g3", 
+                            "g4", "g5", "g6",
+                            "g7", "g8", "g9",
+                        },	{
+                            "y1", "y2", "y3",
+                            "y4", "y5", "y6",
+                            "y7", "y8", "y9",
+                        },	{
+                            "w1", "w2", "w3",
+                            "w4", "w5", "w6",
+                            "w7", "w8", "w9",
+                        },
+                    };
+        
+    //rotates counterclockwise
+    static void f_rotation(String[][] Cube, int face){
+            String temp = null;
 
-	static void rotateFace(String[][] Cube, int face){
-	        String Temp = null;
-	        Temp = Cube[face][0];
-	        Cube[face][0] = Cube[face][6];
-	        Cube[face][6] = Cube[face][8];
-	        Cube[face][8] = Cube[face][2];
-	        Cube[face][2] = Temp;
-	        Temp = Cube[face][1];
-	        Cube[face][1] = Cube[face][3];
-	        Cube[face][3] = Cube[face][7];
-	        Cube[face][7] = Cube[face][5];
-	        Cube[face][5] = Temp;
+            //top corners rotation
+            temp = Cube[face][0];
+            Cube[face][0] = Cube[face][6];
+            Cube[face][6] = Cube[face][8];
+            Cube[face][8] = Cube[face][2];
+            Cube[face][2] = temp;
 
-		/*
-		 * 		1 -> 2 -> 3
-		 * 		/\       \/
-		 * 		4    5    6
-		 * 		/\       \/
-		 * 		7 <- 8 <- 9
-		 * 
-		 * 	 Clockwise Rotation
-		 *
-		 */
+            //top insides rotations
+            temp = Cube[face][1];
+            Cube[face][1] = Cube[face][3];
+            Cube[face][3] = Cube[face][7];
+            Cube[face][7] = Cube[face][5];
+            Cube[face][5] = temp;
 
-	} 
-	static void rotateFacePrime(String[][] Cube, int face){
-		String Temp = null;
-		Temp = Cube[face][0];
-		Cube[face][0] = Cube[face][2];
-		Cube[face][2] = Cube[face][8];
-		Cube[face][8] = Cube[face][6];
-		Cube[face][6] = Temp;
-		Temp = Cube[face][1];
-		Cube[face][1] = Cube[face][5];
-		Cube[face][5] = Cube[face][7];
-		Cube[face][7] = Cube[face][3];
-		Cube[face][3] = Temp;
+        /*
+            * 		1 -> 2 -> 3
+            * 		/\       \/
+            * 		4    5    6
+            * 		/\       \/
+            * 		7 <- 8 <- 9
+            * 
+            * 	 Clockwise Rotation
+            *
+            */		 	
+            //edge rotations
+            temp = Cube[face - 3][2];
+            Cube[face - 3][2] = Cube[face + 2][2];
+            Cube[face + 2][2] = Cube[face - 1][2];
+            Cube[face - 1][2] = Cube[face + 1][2];
+            Cube[face + 1][2] = temp;
 
-		/*
-		 * Counter Clockwise Movement
-		 */
-	}
+            temp = Cube[face - 3][1];
+            Cube[face - 3][1] = Cube[face + 2][1];
+            Cube[face + 2][1] = Cube[face - 1][1];
+            Cube[face - 1][1] = Cube[face + 1][1];
+            Cube[face + 1][1] = temp;
 
+            temp = Cube[face - 3][0];
+            Cube[face - 3][0] = Cube[face + 2][0];
+            Cube[face + 2][0] = Cube[face - 1][0];
+            Cube[face - 1][0] = Cube[face + 1][0];
+            Cube[face + 1][0] = temp;
+    } 
 
-	static void printCube(String[][] theCube) {
-		for (int x = 0; x < 6; x++){
-	        	int z = -1;
-	        	for (int y = 0; y < 3; y++){
-		                z++;
-		                System.out.print(theCube[x][z]);
-		                System.out.print("|"); 
-		                z++;
-		                System.out.print(theCube[x][z]);
-		                System.out.print("|");  
-		                z++;
-		                System.out.print(theCube[x][z]);
-		                System.out.println("");    
-	                
-	            	}
-	        	System.out.println("");    
-		}
-	}
+    static void u_rotation(String [][] Cube, int face){
+        String temp = null;  
 
-	public static void moveCube(String direction, String[][] numCube){
-		//in theory, this would take individual moves, rotate the face and move the nearest
-		//row of faces and rotate them as well
-		/*
-		 * if move is u, take top face and rotate with front, left, right, back and so on.
-		 * use switch statements, will help for cases of movement
-		 */
-		//String U.moveCube() = rotateFace(numCube, 0);
-		switch(direction){
-			case "U":
-			rotateFacePrime(numCube, 3);
-				break;
-			case "D":
-			rotateFace(numCube, 1);
-				break;
-			case "F":
-			rotateFace(numCube, 0);
-				break;
-			case "B":
-			rotateFacePrime(numCube, 2);
-				break;
-			case "L":
-			rotateFace(numCube, 4);
-				break;
-			case "R":
-			rotateFace(numCube, 5);
-				break;
-			case "U'":
-			rotateFace(numCube, 3);
-				break;
-			case "D'":
-			rotateFacePrime(numCube, 1);
-				break;
-			case "F'":
-			rotateFacePrime(numCube, 0);
-				break;
-			case "B'":
-			rotateFace(numCube, 2);
-				break;
-			case "L'":
-			rotateFacePrime(numCube, 4);
-				break;
-			case "R'":
-			rotateFacePrime(numCube, 5);
-				break;
-			default:
-			System.out.println("Move not found, please try again.");
-		}
-	}
-	
-	public static void main(final String[] args) {
+        //top corners
+        temp = Cube[face - 3][0];
+        Cube[face - 3][0] = Cube[face - 3][2];
+        Cube[face - 3][2] = Cube[face - 3][8];
+        Cube[face - 3][8] = Cube[face - 3][6];
+        Cube[face - 3][6] = temp;
 
-		/*
-		 * Uncomment the lines down below to begin testing the starter code.
-		 */
+        //top insides
+        temp = Cube[face - 3][1];
+        Cube[face - 3][1] = Cube[face - 3][5];
+        Cube[face - 3][5] = Cube[face - 3][7];
+        Cube[face - 3][7] = Cube[face - 3][3];
+        Cube[face - 3][3] = temp;
 
-		 moveCube("U'", numCube);
-		
-		 printCube(myCube);
-		 printCube(numCube);
-	
-	}
+        //edge rotations
+        temp = Cube[face][0];
+        Cube[face][0] = Cube[face + 1][2];
+        Cube[face + 1][2] = Cube[face - 2][0];
+        Cube[face - 2][0] = Cube[face + 2][6];
+        Cube[face + 2][6] = temp;
 
+        temp = Cube[face][1];
+        Cube[face][1] = Cube[face + 1][5];
+        Cube[face + 1][5] = Cube[face - 2][1];
+        Cube[face - 2][1] = Cube[face + 2][3];
+        Cube[face + 2][3] = temp;
+
+        temp = Cube[face][2];
+        Cube[face][2] = Cube[face + 1][8];
+        Cube[face + 1][8] = Cube[face - 2][2];
+        Cube[face - 2][2] = Cube[face + 2][0];
+        Cube[face + 2][0] = temp;
+
+    }
+
+    static void r_rotation(String [][] Cube, int face){
+        String temp = null;
+
+        //side rotation
+        temp = Cube[face + 1][0];
+        Cube[face + 1][0] = Cube[face + 1][6];
+        Cube[face + 1][6] = Cube[face + 1][8];
+        Cube[face + 1][8] = Cube[face + 1][2];
+        Cube[face + 1][2] = temp;
+
+        //sides insides rotation
+        temp = Cube[face + 1][1];
+        Cube[face + 1][1] = Cube[face + 1][3];
+        Cube[face + 1][3] = Cube[face + 1][7];
+        Cube[face + 1][7] = Cube[face + 1][5];
+        Cube[face + 1][5] = temp;
+
+        //edge rotations
+        temp = Cube[face][2];
+        Cube[face][2] = Cube[face - 1][2];
+        Cube[face - 1][2] = Cube[face - 2][6];
+        Cube[face - 2][6] = Cube[face - 3][6];
+        Cube[face - 3][6] = temp;
+        
+        temp = Cube[face][5];
+        Cube[face][5] = Cube[face - 1][5];
+        Cube[face - 1][5] = Cube[face - 2][3];
+        Cube[face - 2][3] = Cube[face - 3][3];
+        Cube[face - 3][3] = temp;
+
+        temp = Cube[face][8];
+        Cube[face][8] = Cube[face - 1][8];
+        Cube[face - 1][8] = Cube[face - 2][0];
+        Cube[face - 2][0] = Cube[face - 3][0];
+        Cube[face - 3][0] = temp;
+    }
+
+    static void b_rotation(String [][] Cube, int face){
+        String temp = null;
+
+        //back corners
+        temp = Cube[face - 2][0];
+        Cube[face - 2][0] = Cube[face - 2][6];
+        Cube[face - 2][6] = Cube[face - 2][8];
+        Cube[face - 2][8] = Cube[face - 2][2];
+        Cube[face - 2][2] = temp;	
+        
+        //back insides
+        temp = Cube[face - 2][1];
+        Cube[face - 2][1] = Cube[face - 2][3];
+        Cube[face - 2][3] = Cube[face - 2][7];
+        Cube[face - 2][7] = Cube[face - 2][5];
+        Cube[face - 2][5] = temp;
+
+        //edge rotation
+        temp = Cube[face + 1][6];
+        Cube[face + 1][6] = Cube[face - 1][6];
+        Cube[face - 1][6] = Cube[face + 2][6];
+        Cube[face + 2][6] = Cube[face - 3][6];
+        Cube[face - 3][6] = temp;
+
+        temp = Cube[face + 1][7];
+        Cube[face + 1][7] = Cube[face - 1][7];
+        Cube[face - 1][7] = Cube[face + 2][7];
+        Cube[face + 2][7] = Cube[face - 3][7];
+        Cube[face - 3][7] = temp;
+
+        temp = Cube[face + 1][8];
+        Cube[face + 1][8] = Cube[face - 1][8];
+        Cube[face - 1][8] = Cube[face + 2][8];
+        Cube[face + 2][8] = Cube[face - 3][8];
+        Cube[face - 3][8] = temp;
+    }
+    
+    static void l_rotation(String [][] Cube, int face){
+        String temp = null;
+
+        //side corners
+        temp = Cube[face + 2][0];
+        Cube[face + 2][0] = Cube[face + 2][6];
+        Cube[face + 2][6] = Cube[face + 2][8];
+        Cube[face + 2][8] = Cube[face + 2][2];
+        Cube[face + 2][2] = temp;
+
+        //side insides
+        temp = Cube[face + 2][1];
+        Cube[face + 2][1] = Cube[face + 2][3];
+        Cube[face + 2][3] = Cube[face + 2][7];
+        Cube[face + 2][7] = Cube[face + 2][5];
+        Cube[face + 2][5] = temp;
+
+        //edge rotations
+        temp = Cube[face - 3][8];
+        Cube[face - 3][8] = Cube[face - 2][8];
+        Cube[face - 2][8] = Cube[face - 1][0];
+        Cube[face - 1][0] = Cube[face][0];
+        Cube[face][0] = temp;
+
+        temp = Cube[face - 3][5];
+        Cube[face - 3][5] = Cube[face - 2][5];
+        Cube[face - 2][5] = Cube[face - 1][3];
+        Cube[face - 1][3] = Cube[face][3];
+        Cube[face][3] = temp;
+
+        temp = Cube[face - 3][2];
+        Cube[face - 3][2] = Cube[face - 2][2];
+        Cube[face - 2][2] = Cube[face - 1][6];
+        Cube[face - 1][6] = Cube[face][6];
+        Cube[face][6] = temp;
+    }
+
+    static void d_rotation(String [][] Cube, int face){
+        String temp = null;
+
+        //bottom corners
+        temp = Cube[face - 1][0];
+        Cube[face - 1][0] = Cube[face - 1][6];
+        Cube[face - 1][6] = Cube[face - 1][8];
+        Cube[face - 1][8] = Cube[face - 1][2];
+        Cube[face - 1][2] = temp;
+
+        //edge rotation 
+        temp = Cube[face][6];
+        Cube[face][6] = Cube[face + 2][8];
+        Cube[face + 2][8] = Cube[face - 2][6];
+        Cube[face - 2][6] = Cube[face + 1][0];
+        Cube[face + 1][0] = temp;
+
+        temp = Cube[face][7];
+        Cube[face][7] = Cube[face + 2][5];
+        Cube[face + 2][5] = Cube[face - 2][7];
+        Cube[face - 2][7] = Cube[face + 1][3];
+        Cube[face + 1][3] = temp;
+
+        temp = Cube[face][8];
+        Cube[face][8] = Cube[face + 2][2];
+        Cube[face + 2][2] = Cube[face - 2][8];
+        Cube[face - 2][8] = Cube[face + 1][6];
+        Cube[face + 1][6] = temp;
+    }
+
+    static void r_prime_rotation(String [][] Cube, int face){
+        String temp = null;
+
+        //side corners
+        temp = Cube[face + 1][0];
+        Cube[face + 1][0] = Cube[face + 1][2];
+        Cube[face + 1][2] = Cube[face + 1][8];
+        Cube[face + 1][8] = Cube[face + 1][6];
+        Cube[face + 1][6] = temp;
+
+        //side insides rotation
+        temp = Cube[face + 1][1];
+        Cube[face + 1][1] = Cube[face + 1][5];
+        Cube[face + 1][5] = Cube[face + 1][7];
+        Cube[face + 1][7] = Cube[face + 1][3];
+        Cube[face + 1][3] = temp;
+
+        //edge rotations
+        temp = Cube[face - 3][0];
+        Cube[face - 3][0] = Cube[face - 2][0];
+        Cube[face - 2][0] = Cube[face - 1][8];
+        Cube[face - 1][8] = Cube[face][8];
+        Cube[face][8] = temp;
+
+        temp = Cube[face - 3][3];
+        Cube[face - 3][3] = Cube[face - 2][3];
+        Cube[face - 2][3] = Cube[face - 1][5];
+        Cube[face - 1][5] = Cube[face][5];
+        Cube[face][5] = temp;
+
+        temp = Cube[face - 3][6];
+        Cube[face - 3][6] = Cube[face - 2][6];
+        Cube[face - 2][6] = Cube[face - 1][2];
+        Cube[face - 1][2] = Cube[face][2];
+        Cube[face][2] = temp;
+    }
+
+    static void f_prime_rotation(String[][] Cube, int face){
+        String temp = null;
+
+        //face = 2 (green)
+        temp = Cube[face][0];
+        Cube[face][0] = Cube[face][2];
+        Cube[face][2] = Cube[face][8];
+        Cube[face][8] = Cube[face][6];
+        Cube[face][6] = temp;
+
+        temp = Cube[face][1];
+        Cube[face][1] = Cube[face][5];
+        Cube[face][5] = Cube[face][7];
+        Cube[face][7] = Cube[face][3];
+        Cube[face][3] = temp;
+
+    /*
+        * 		3 -> 6 -> 9
+        * 		/\       \/
+        * 		2    5    8
+        * 		/\       \/
+        * 		1 <- 4 <- 7
+        * 
+        * 	 counter clockwise Rotation
+        *
+        */
+
+        //edge rotations
+        temp = Cube[face - 3][2];
+        Cube[face - 3][2] = Cube[face + 1][2];
+        Cube[face + 1][2] = Cube[face -1][2];
+        Cube[face - 1][2] = Cube[face + 2][2];
+        Cube[face + 2][2] = temp;
+
+        temp = Cube[face - 3][1];
+        Cube[face - 3][1] = Cube[face + 1][1];
+        Cube[face + 1][1] = Cube[face - 1][1];
+        Cube[face - 1][1] = Cube[face + 2][1];
+        Cube[face + 2][1] = temp;
+
+        temp = Cube[face - 3][0];
+        Cube[face - 3][0] = Cube[face + 1][0];
+        Cube[face + 1][0] = Cube[face - 1][0];
+        Cube[face  - 1][0] = Cube[face + 2][0];
+        Cube[face + 2][0] = temp;
+    }
+    
+    static void u_prime_rotation(String[][] Cube, int face){
+        String temp = null;
+
+        //top corners
+        temp = Cube[face - 3][0];
+        Cube[face - 3][0] = Cube[face - 3][6];
+        Cube[face - 3][6] = Cube[face - 3][8];
+        Cube[face - 3][8] = Cube[face - 3][2];
+        Cube[face - 3][2] = temp;
+
+        //top insides
+        temp = Cube[face - 3][1];
+        Cube[face - 3][1] = Cube[face - 3][3];
+        Cube[face - 3][3] = Cube[face - 3][7];
+        Cube[face - 3][7] = Cube[face - 3][5];
+        Cube[face - 3][5] = temp;
+
+        //edge rotation
+        temp = Cube[face][0];
+        Cube[face][0] = Cube[face + 2][6];
+        Cube[face + 2][6] = Cube[face - 2][0];
+        Cube[face - 2][0] = Cube[face + 1][2];
+        Cube[face + 1][2] = temp;
+
+        temp = Cube[face][1];
+        Cube[face][1] = Cube[face + 2][3];
+        Cube[face + 2][3] = Cube[face - 2][1];
+        Cube[face - 2][1] = Cube[face + 1][5];
+        Cube[face + 1][5] = temp;
+
+        temp = Cube[face][2];
+        Cube[face][2] = Cube[face + 2][0];
+        Cube[face + 2][0] = Cube[face - 2][2];
+        Cube[face - 2][2] = Cube[face + 1][8];
+        Cube[face + 1][8] = temp;
+    }
+
+    static void d_prime_rotation(String [][] Cube, int face){
+        String temp = null;
+
+        //bottom corners
+        temp = Cube[face - 1][0];
+        Cube[face - 1][0] = Cube[face - 1][2];
+        Cube[face - 1][2] = Cube[face - 1][8];
+        Cube[face - 1][8] = Cube[face - 1][6];
+        Cube[face - 1][6] = temp;
+
+        //bottom insides
+        temp = Cube[face - 1][1];
+        Cube[face - 1][1] = Cube[face - 1][5];
+        Cube[face - 1][5] = Cube[face - 1][7];
+        Cube[face - 1][7] = Cube[face - 1][3];
+        Cube[face - 1][3] = temp;
+
+        //edge rotations
+        temp = Cube[face + 1][0];
+        Cube[face + 1][0] = Cube[face - 2][6];
+        Cube[face - 2][6] = Cube[face + 2][8];
+        Cube[face + 2][8] = Cube[face][6];
+        Cube[face][6] = temp;
+
+        temp = Cube[face + 1][3];
+        Cube[face + 1][3] = Cube[face - 2][7];
+        Cube[face - 2][7] = Cube[face + 2][5];
+        Cube[face + 2][5] = Cube[face][7];
+        Cube[face][7] = temp;
+
+        temp = Cube[face + 1][6];
+        Cube[face + 1][6] = Cube[face - 2][8];
+        Cube[face - 2][8] = Cube[face + 2][2];
+        Cube[face + 2][2] = Cube[face][8];
+        Cube[face][8] = temp;
+    }
+
+    static void b_prime_rotation(String [][] Cube, int face){
+        String temp = null;
+
+        //back corners
+        temp = Cube[face - 2][0];
+        Cube[face - 2][0] = Cube[face - 2][2];
+        Cube[face - 2][2] = Cube[face - 2][8];
+        Cube[face - 2][8] = Cube[face - 2][6];
+        Cube[face - 2][6] = temp;
+
+        //back insides
+        temp = Cube[face - 2][1];
+        Cube[face - 2][1] = Cube[face - 2][5];
+        Cube[face - 2][5] = Cube[face - 2][7];
+        Cube[face - 2][7] = Cube[face - 2][3];
+        Cube[face - 2][3] = temp;
+
+        //edge rotations
+        temp = Cube[face + 2][6];
+        Cube[face + 2][6] = Cube[face - 1][6];
+        Cube[face - 1][6] = Cube[face + 1][6];
+        Cube[face + 1][6] = Cube[face - 3][6];
+        Cube[face - 3][6] = temp;
+
+        temp = Cube[face + 2][7];
+        Cube[face + 2][7] = Cube[face - 1][7];
+        Cube[face - 1][7] = Cube[face + 1][7];
+        Cube[face + 1][7] = Cube[face - 3][7];
+        Cube[face - 3][7] = temp;
+
+        temp = Cube[face + 2][8];
+        Cube[face + 2][8] = Cube[face - 1][8];
+        Cube[face - 1][8] = Cube[face + 1][8];
+        Cube[face + 1][8] = Cube[face - 3][8];
+        Cube[face - 3][8] = temp;
+    }
+
+    static void l_prime_rotation(String [][] Cube, int face){
+        String temp = null;
+
+        //side corners
+        temp = Cube[face + 2][0];
+        Cube[face + 2][0] = Cube[face + 2][2];
+        Cube[face + 2][2] = Cube[face + 2][8];
+        Cube[face + 2][8] = Cube[face + 2][6];
+        Cube[face + 2][6] = temp;
+
+        //side insides
+        temp = Cube[face + 2][1];
+        Cube[face + 2][1] = Cube[face + 2][5];
+        Cube[face + 2][5] = Cube[face + 2][7];
+        Cube[face + 2][7] = Cube[face + 2][3];
+        Cube[face + 2][3] = temp;
+
+        //edge rotations
+        temp = Cube[face - 1][0];
+        Cube[face - 1][0] = Cube[face - 2][8];
+        Cube[face - 2][8] = Cube[face - 3][8];
+        Cube[face - 3][8] = Cube[face][0];
+        Cube[face][0] = temp;
+
+        temp = Cube[face - 1][3];
+        Cube[face - 1][3] = Cube[face - 2][5];
+        Cube[face - 2][5] = Cube[face - 3][5];
+        Cube[face - 3][5] = Cube[face][3];
+        Cube[face][3] = temp;
+
+        temp = Cube[face - 1][6];
+        Cube[face - 1][6] = Cube[face - 2][2];
+        Cube[face - 2][2] = Cube[face - 3][2];
+        Cube[face - 3][2] = Cube[face][6];
+        Cube[face][6] = temp;
+    }
+
+    static void printCube(String[][] theCube) {
+        for (int x = 0; x < 6; x++){
+                int z = -1;
+                for (int y = 0; y < 3; y++){
+                        z++;
+                        System.out.print(theCube[x][z]);
+                        System.out.print("|"); 
+                        z++;
+                        System.out.print(theCube[x][z]);
+                        System.out.print("|");  
+                        z++;
+                        System.out.print(theCube[x][z]);
+                        System.out.println("");     
+                    }
+                System.out.println("");    
+        }
+    }
+
+    public static void moveCube(String direction, String[][] numCube){
+        //assuming 3 (green) is front
+        switch(direction){
+            case "U":
+                u_rotation(numCube, 3);
+                break;
+            case "D":
+                d_rotation(numCube, 3);
+                break;
+            case "F":
+                f_rotation(numCube, 3);
+                break;
+            case "B":
+                b_rotation(numCube, 3);
+                break;
+            case "L":
+                l_rotation(numCube, 3);
+                break;
+            case "R":
+                r_rotation(numCube, 3);
+                break;
+            case "U'":
+                u_prime_rotation(numCube, 3);
+                break;
+            case "D'":
+                d_prime_rotation(numCube, 3);
+                break;
+            case "F'":
+                f_prime_rotation(numCube, 3);
+                break;
+            case "B'":
+                b_prime_rotation(numCube, 3);
+                break;
+            case "L'":
+                l_prime_rotation(numCube, 3);
+                break;
+            case "R'":
+                r_prime_rotation(numCube, 3);
+                break;
+        }
+    }
+    
+    public static void main(final String[] args) {
+
+        Scanner user_input = new Scanner(System.in);
+
+        System.out.println("Insert Upper case letter or letter with ' for Prime");
+        System.out.println();
+
+        while(true){
+            System.out.println("Please enter the move you would like to perform: ");
+            String input = user_input.nextLine();
+            moveCube(input.substring(0), Cube);
+            
+            //prints solution to each possibility
+            switch(input){
+                case "U":
+                    System.out.println("Solution: u");
+                    break;
+                case "D":
+                    System.out.println("Solution: d");
+                    break;
+                case "R":	
+                    System.out.println("Solution: r");
+                    break;
+                case "L":
+                    System.out.println("Solution: l");
+                    break;
+                case "F":
+                    System.out.println("Solution: f");
+                    break;
+                case "B":
+                    System.out.println("Solution: b");
+                    break;
+                case "U'":
+                    System.out.println("Solution: U");
+                    break;
+                case "D'":
+                    System.out.println("Solution: D");
+                    break;
+                case "R'":
+                    System.out.println("Solution: R");
+                    break;
+                case "L'":
+                    System.out.println("Solution: I");
+                    break;
+                case "F'":
+                    System.out.println("Solution: F");
+                    break;
+                case "B'":
+                    System.out.println("Solution: B");
+                    break;
+                default:
+                    System.out.println("That is not a valid move please choose from: ");
+                    System.out.println("U D R L F B u d r l f b");
+            }
+            //print(numCube);
+            System.out.println("--------------------------------");
+            printCube(Cube);
+            System.out.println("--------------------------------");
+        }
+    }
 }
-
-/*
- * How I want to attempt the cube assignment:
- * 
- * If I have a face movement, assign the movement of each face as u,d,l,r,b,f as moving
- * the faces on those sides. If that is successful, can move deeper to storage of the cube's
- * movements and finish the assignment well ish.
- * Given is the movement of just one face, must assgn the movement of that face onto 4 other
- * faces, using array manipulation and reassignment.
- */

@@ -3,6 +3,16 @@
 
 //worked with Madison for the assignment
 
+/*
+ * Overall Feedback:
+ * 	This is looking great! Everything seems to be working and in order.
+ * 	It doesn't appear to me that there was an attempt at extra credit (besides squidward)
+ * 	but otherwise pretty much everything appears to be functioning. The only thing that will 
+ * 	drop some points will be the lack of solution code. There was an attempt but it doesn't quite work.
+ * 	Overall well done!
+ * 
+ */
+
 //import statements
 package com.example.project;
 
@@ -15,6 +25,8 @@ public class Cube {
     //I beseech thee, a prism molded to perfection,
 	//crafted in accordance with the meticulous standards fit 
 	//for the paramount of submission.
+
+	//Thank you ser
     static String[][] Cube = 
                     {
                         {
@@ -300,6 +312,15 @@ public class Cube {
         Cube[face - 2][8] = Cube[face + 1][6];
         Cube[face + 1][6] = temp;
     }
+
+	/*
+	 *
+	 * 	I will mention that it wouldn't necessarily be more efficient but it would be faster (for you)
+	 * 	to simply run the regular rotations three times in a row to accomplish the prime rotations.
+	 * 	Then r_prime_rotation() could just be r_rotation(); r_rotation(); r_rotation();
+	 * 	Probably would have save you around 200 ish lines of code as well.
+	 * 
+	 */
 
     static void r_prime_rotation(String [][] Cube, int face){
         String temp = null;
@@ -614,11 +635,15 @@ public class Cube {
 					{"⣿⣿⣿⣿⣿⣿⣷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡼⠁⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣄⠀⠀⠀"},
 					{"⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣦⣤⣤⣀⣀⣀⣀⣀⣀⣀⣤⣤⣤⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀"},
 	};
+
+	//This is easily worth an extra 0.5 a point for sure. 
     public static void main(final String[] args) {
 
+		//I never do it in my examples, but make sure in the future you close your scanner when you're done.
         Scanner user_input = new Scanner(System.in);
 
 		ArrayList <String> moves = new ArrayList<String>();
+		//It appears you never actually use this.
 
         System.out.println("Insert Upper case letter or letter with ' for Prime or q for quit");
         System.out.println();
@@ -626,9 +651,26 @@ public class Cube {
         while(quit){
             System.out.println("Please enter the move you would like to perform: ");
             String input = user_input.nextLine();
+
+			/*
+			 * 
+			 * It would be a good idea to modify the input in some way to make it fit your 
+			 * requirements. For example using input.toUpperCase() so that you could accept 
+			 * lowercase commands.
+			 * 
+			 */
+
             moveCube(input.substring(0), Cube);
             
             //prints solution to each possibility
+
+			/*
+			 * 
+			 * This isn't quite a true solution. It's the solution to the lates move yes but not to the cube.
+			 * If I make three U moves in a row it will still say U' is the solution. Even though U would be the soln.
+			 * 
+			 */
+
             switch(input){
                 case "U":
                     System.out.println("Solution: U'");
@@ -679,6 +721,9 @@ public class Cube {
 					moves.add("B'");
                     break;
 				case "q":
+
+					// this is more of a style critique, but wouldn't quit be true when you want to quit?
+					// try to consider how a statement "reads" when naming variables.
 					quit = false;
 					//litterally cause im bored, I apologize... but squidward :)
 					for (String[] row : Squidward) {
@@ -687,6 +732,7 @@ public class Cube {
 						}
 						System.out.println();
 					}
+					//hail squidward
 					break;
                 default:
                     System.out.println("That is not a valid move please choose from: ");
@@ -704,3 +750,5 @@ public class Cube {
     }
 
 //nice ammount of lines I got here 😏
+
+//Not bad, fairly compact considering the approach.
